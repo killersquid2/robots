@@ -15,15 +15,13 @@ def liftCan(servo):
     servo.position = 1
 
 def main(myRobot):
-    motor_board = myRobot.motor_board
     servo_board = myRobot.servo_board
-    power_board = myRobot.power_board
-    
     servo_board.gpios[PIN_SWITCH].mode = PinMode.INPUT_PULLUP
-    
     servo = servo_board.servos[PIN_SERVO]
+	
     servo.position = 0
     
     while not canHeld(servo_board):
         continue
+		
     liftCan(servo)

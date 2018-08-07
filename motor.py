@@ -10,7 +10,8 @@ def translate(value, leftMin, leftMax, rightMin, rightMax):
     return rightMin + (valueScaled * rightSpan)
 
 def main(myRobot):
-	m = myRobot.motor_board
+	motor_board = myRobot.motor_board
+	servo_board = myRobot.servo_board
 	
 	lastRight = 0.95
 	lastLeft = 1
@@ -19,9 +20,9 @@ def main(myRobot):
 		leftDrive = 1
 		rightDrive = 0.95
 		
-		front = r.servo_board.read_ultrasound(6, 7)
-		left = r.servo_board.read_ultrasound(10, 11)
-		right = r.servo_board.read_ultrasound(8, 9)
+		front = servo_board.read_ultrasound(6, 7)
+		left = servo_board.read_ultrasound(10, 11)
+		right = servo_board.read_ultrasound(8, 9)
 		
 		# if were approaching a wall we should start to turn
 		if front < 0.7 and right < 0.5:
@@ -34,6 +35,5 @@ def main(myRobot):
 
 		lastRight = (rightDrive + lastRight)/2
 		lastLeft = (leftDrive + lastLeft)/2
-		m.m1 = lastRight
-		m.m0 = lastLeft
-		
+		motor_board.m1 = lastRight
+		motor_board.m0 = lastLeft
