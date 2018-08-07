@@ -1,5 +1,5 @@
-from threading import threading
-from robot import *
+from threading import Thread
+from robot import Robot
 
 import canpickup
 import motor
@@ -9,11 +9,8 @@ import motor
 #import random
 
 r = Robot()
-
-canpickupThread = threading.Thread(target=canpickup, args=(r))
-motorThread = threading.Thread(target=motor, args=(r))
+canpickupThread = Thread(target=canpickup.main, args=(r,))
+motorThread = Thread(target=motor.main, args=(r,))
 
 canpickupThread.start()
 motorThread.start()
-
-print('done')
