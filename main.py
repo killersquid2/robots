@@ -15,3 +15,6 @@ motorThread = Thread(target=motor.main, args=(r,))
 
 canpickupThread.start()
 motorThread.start()
+
+while True:
+    continue
