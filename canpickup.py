@@ -1,7 +1,7 @@
 import time
 from robot import PinMode, PinValue
 
-PIN_SERVO = 0
+PIN_SERVO = 15
 PIN_SWITCH = 2
 
 def canHeld(servo_board):
